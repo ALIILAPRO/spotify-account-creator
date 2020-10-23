@@ -29,5 +29,5 @@ A project for register on www.spotify.com
 
 
 --------------------------------------------------------------------
-![](https://github.com/ALIILAPRO/spotify-account-creator/blob/master/sc/sc-1.png)
-![](https://github.com/ALIILAPRO/spotify-account-creator/blob/master/sc/sc-2.png)
+![](https://github.com/ALIILAPRO/spotify-account-creator/blob/master/sc/sc-1.jpg)
+![](https://github.com/ALIILAPRO/spotify-account-creator/blob/master/sc/sc-2.jpg)
