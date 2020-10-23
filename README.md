@@ -28,3 +28,6 @@ A project for register on www.spotify.com
 - proxy https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all
 
 
+--------------------------------------------------------------------
+![](https://github.com/ALIILAPRO/warp-plus-cloudflare/blob/master/sc/sc-1.png)
+![](https://github.com/ALIILAPRO/warp-plus-cloudflare/blob/master/sc/sc-2.png)
