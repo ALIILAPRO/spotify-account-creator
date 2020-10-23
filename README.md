@@ -3,7 +3,7 @@
 --------------------------------------------------------------------
 
 ### [!] About spotify
-WWith Spotify, it’s easy to find the right music or podcast for every moment – on your phone, your computer, your tablet and more.
+With Spotify, it’s easy to find the right music or podcast for every moment – on your phone, your computer, your tablet and more.
 [Read more](https://www.spotify.com/us/about-us/contact/)
 
 ### [!] About Script spotify-account-creator (spotify-reg.py)
