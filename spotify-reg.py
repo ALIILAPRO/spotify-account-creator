@@ -10,7 +10,7 @@ import time
 from threading import Thread, active_count
 
 
-script_version = "1.1"
+script_version = "1.0"
 script_title   = "Spotify Account Creator By ALIILAPRO"
 script_info    = f'''
 	 ..: {script_title} :..
