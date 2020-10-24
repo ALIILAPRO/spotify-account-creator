@@ -8,6 +8,7 @@ With Spotify, itâ€™s easy to find the right music or podcast for every moment â€
 
 ### [!] About Script spotify-account-creator (spotify-reg.py)
 A project for register on www.spotify.com
+
 --------------------------------------------------------------------
 ### Download App For windows os
 
