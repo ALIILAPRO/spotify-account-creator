@@ -17,6 +17,7 @@ A project for register on www.spotify.com
  
  - [![Run on Repl.it](https://repl.it/badge/github/aliilapro/spotify)](https://spotify.aliilapro.repl.run)
  
+ --------------------------------------------------------------------
  ### [?] How to use this script on ( windows, mac, linux )
 1. First download python and install in your system. [Python +3.8](https://www.python.org/downloads/)
 2. Install requests library `pip install requests`
@@ -24,10 +25,16 @@ A project for register on www.spotify.com
 4. Open a cmd or terminal or shell in the extracted directory
 5. Enter `python spotify-reg.py`
 6. Run the script and use it
-
-- proxy https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all
-
-
+--------------------------------------------------------------------
+### [?] How to use this script on ( android )
+1. If it is not installed on your device, download it here. [Termux](https://play.google.com/store/apps/details?id=com.termux&hl=en_GB)
+2. Open Termux app
+3. Install git    `pkg install git`
+4. Install python `pkg install python`
+5. Install requests library `pip install requests`
+6. Clone the git  `git clone https://github.com/aliilapro/spotify-account-creator`
+7. Open script    `cd spotify-account-creator`
+8. Run script     `python3 spotify-reg.py`
 --------------------------------------------------------------------
 ![](https://github.com/ALIILAPRO/spotify-account-creator/blob/main/sc/s-2.jpg)
 ![](https://github.com/ALIILAPRO/spotify-account-creator/blob/main/sc/s-1.jpg)
