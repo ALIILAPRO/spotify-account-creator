@@ -8,15 +8,14 @@ With Spotify, itâ€™s easy to find the right music or podcast for every moment â€
 
 ### [!] About Script spotify-account-creator (spotify-reg.py)
 A project for register on www.spotify.com
-
+--------------------------------------------------------------------
 ### Download App For windows os
 
 - [spotify-reg.exe version 1.0](https://github.com/ALIILAPRO/spotify-account-creator/releases/download/v1.0/spotify-reg.zip)
-
+--------------------------------------------------------------------
  ### Test the online version
  
  - [![Run on Repl.it](https://repl.it/badge/github/aliilapro/spotify)](https://spotify.aliilapro.repl.run)
- 
  --------------------------------------------------------------------
  ### [?] How to use this script on ( windows, mac, linux )
 1. First download python and install in your system. [Python +3.8](https://www.python.org/downloads/)
