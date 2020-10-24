@@ -29,14 +29,8 @@ script_info    = f'''
 class Main:
 
 	def clear(self, text):
-		if os.name == 'posix':
-			os.system('clear')
-			print(text)
-		elif os.name in ('ce', 'nt', 'dos'):
-			os.system('cls')
-			print(text)
-		else:
-			print("\n") * 120
+		os.system('cls' if os.name == 'nt' else 'clear')
+		print(text)
 
 	def settitle(self, title_name:str):
 		os.system("title {0}".format(title_name))
