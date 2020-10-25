@@ -5,12 +5,11 @@ import random
 import string
 
 import os
-import time
 
 from threading import Thread, active_count
 
 
-script_version = "1.1"
+script_version = "1.2"
 script_title   = "Spotify Account Creator By ALIILAPRO"
 script_info    = f'''
 	 ..: {script_title} :..
@@ -38,6 +37,7 @@ class Main:
 	def readfile(self, filename, method):
 		with open(filename,method) as f:
 			content = [line.strip('\n') for line in f]
+			
 			return content
 
 	def countfile(self, filename, method):
@@ -122,7 +122,6 @@ class Main:
 						print('[>] ACCOUNT CREATED SUCCESSFULLY\n[-] Email:{0}\n[-] Password:{1}\n[-] Username:{2}\n[-] Gender:{3}\n[-] Birth year:{4}\n[-] Birth month:{5}\n[-] Birth day:{6}\n'.format(credentails['email'],credentails['password'],credentails['username'],credentails['gender'],credentails['birth_year'],credentails['birth_month'],credentails['birth_day']))
 						with open('reg.txt','a') as f:
 							f.write('[INFO ACCOUNT]\nEmail:{0}\nPassword:{1}\nUsername:{2}\nGender:{3}\nBirth year:{4}\nBirth month:{5}\nBirth day:{6}\n___________________\n\n'.format(credentails['email'],credentails['password'],credentails['username'],credentails['gender'],credentails['birth_year'],credentails['birth_month'],credentails['birth_day']))
-						time.sleep(self.threads)
 					else:
 						self.creator()
 				else:
