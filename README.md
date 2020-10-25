@@ -12,7 +12,7 @@ A project for register on www.spotify.com
 --------------------------------------------------------------------
 ### Download App For windows os
 
-- [spotify-reg.exe version 1.0](https://github.com/ALIILAPRO/spotify-account-creator/releases/download/v1.0/spotify-reg.zip)
+- [spotify-reg.exe version 1.2](https://github.com/ALIILAPRO/spotify-account-creator/releases/download/v1.2/spotify-reg.exe)
 --------------------------------------------------------------------
  ### Test the online version
  
