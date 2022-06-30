@@ -5,11 +5,12 @@ import random
 import string
 
 import os
+import time
 
 from threading import Thread, active_count
 
 
-script_version = "1.2"
+script_version = "2.0"
 script_title   = "Spotify Account Creator By ALIILAPRO"
 script_info    = f'''
 	 ..: {script_title} :..
@@ -24,7 +25,6 @@ script_info    = f'''
  [-] Telegram : aliilapro
  --------
 '''
-
 class Main:
 
 	def clear(self, text):
@@ -34,49 +34,17 @@ class Main:
 	def settitle(self, title_name:str):
 		os.system("title {0}".format(title_name))
 
-	def readfile(self, filename, method):
-		with open(filename,method) as f:
-			content = [line.strip('\n') for line in f]
-			
-			return content
-
-	def countfile(self, filename, method):
-		file    = open(filename,method) 
-		Counter = 0
-		Content = file.read() 
-		CoList  = Content.split("\n") 
-		for i in CoList: 
-			if i: 
-				Counter += 1
-			
-		return Counter
-
-	def getproxy(self):
-		r = requests.get('https://xcoder.fun/p.php?r=y')
-			
-		with open('proxy.txt','w') as fd:
-			fd.write(r.text.replace('\n',''))
-
-	def getrandomproxy(self):
-		proxies_file = self.readfile('proxy.txt','r')
-		proxies = {
-			"http":"http://{0}".format(random.choice(proxies_file)),
-			"https":"https://{0}".format(random.choice(proxies_file))
-		}
-
-		return proxies
-
 	def __init__(self):
 		self.settitle(script_title)
 		self.clear(script_info)
-		self.getproxy()
 		self.email                 = input('[#] Enter Email: ')
 		self.password              = input('[#] Enter Password: ')
 		self.birth_year            = int(input('[#] Enter the birth year (only year): '))
 		self.birth_month           = int(input('[#] Enter the birth month (1 - 12): '))
 		self.birth_day             = int(input('[#] Enter the birth day (1 - 28): '))
 		self.gender                = input('[#] Enter the gender (male or female): ')
-		self.threads               = self.countfile('proxy.txt','r')
+		self.threads               = 10
+		
 
 	def gencredentailsmethod(self):
 		credentails = {}
@@ -94,49 +62,60 @@ class Main:
 
 	def creator(self):
 		try:
+			session = requests.Session()
 
 			headers = {
-				'User-agent': 'S4A/2.0.15 (com.spotify.s4a; build:201500080; iOS 13.4.0) Alamofire/4.9.0',
-				'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-				'Accept': 'application/json, text/plain;q=0.2, */*;q=0.1',
-				'App-Platform': 'IOS',
-				'Spotify-App': 'S4A',
-				'Accept-Language': 'en-TZ;q=1.0',
-				'Accept-Encoding': 'gzip;q=1.0, compress;q=0.5',
-				'Spotify-App-Version': '2.0.15'
+				"Accept": "*/*",
+				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4280.141 Safari/537.36",
+				"Content-Type": "application/x-www-form-urlencoded",
+				"Referer": "https://www.spotify.com/"
 			}
 
-
-			url             = 'https://spclient.wg.spotify.com/signup/public/v1/account'
 			credentails     = self.gencredentailsmethod()
-			data            = 'creation_point=lite_7e7cf598605d47caba394c628e2735a2&password_repeat={0}&platform=Android-ARM&iagree=true&password={1}&gender={2}&key=a2d4b979dc624757b4fb47de483f3505&birth_day={3}&birth_month={4}&email={5}&birth_year={6}'.format(credentails['password'],credentails['password'],credentails['gender'],credentails['birth_day'],credentails['birth_month'],credentails['email'],credentails['birth_year'])
-			req             = requests.post(url=url, data=data, headers=headers, proxies=self.getrandomproxy(), timeout=5)
-			json_data       = json.loads(req.text)
+			data            = 'birth_day={0}&birth_month={1}&birth_year={2}&collect_personal_info=undefined&creation_flow=&creation_point=https://www.spotify.com/uk/&displayname={3}&email={4}&gender={5}&iagree=1&key=a1e486e2729f46d6bb368d6b2bcda326&password={6}&password_repeat={7}&platform=www&referrer=&send-email=1&thirdpartyemail=0&fb=0'.format(credentails['birth_day'],credentails['birth_month'],credentails['birth_year'],credentails['username'],credentails['email'],credentails['gender'],credentails['password'],credentails['password'])
+			req             = session.post("https://spclient.wg.spotify.com/signup/public/v1/account", headers=headers, data=data)
+			if "login_token" in req.text:
+				login_token = req.json()['login_token']
 
-
-			if 'status' in json_data:
-				if json_data['status'] == 1:
-					username = json_data['username']
-					if username != '':
-						self.clear(script_info)
-						print('[>] ACCOUNT CREATED SUCCESSFULLY\n[-] Email:{0}\n[-] Password:{1}\n[-] Username:{2}\n[-] Gender:{3}\n[-] Birth year:{4}\n[-] Birth month:{5}\n[-] Birth day:{6}\n'.format(credentails['email'],credentails['password'],credentails['username'],credentails['gender'],credentails['birth_year'],credentails['birth_month'],credentails['birth_day']))
-						with open('reg.txt','a') as f:
-							f.write('[INFO ACCOUNT]\nEmail:{0}\nPassword:{1}\nUsername:{2}\nGender:{3}\nBirth year:{4}\nBirth month:{5}\nBirth day:{6}\n___________________\n\n'.format(credentails['email'],credentails['password'],credentails['username'],credentails['gender'],credentails['birth_year'],credentails['birth_month'],credentails['birth_day']))
-					else:
-						self.creator()
-				else:
-					self.creator()
 			else:
-				self.creator()
-		except:
-			self.creator()
+				return
 
+			r = session.get("https://www.spotify.com/uk/signup/?forward_url=https://accounts.spotify.com/en/status&sp_t_counter=1")
+			crsf = r.text.split('csrfToken":"')[1].split('"')[0]
+
+			headers = {
+				"Accept": "*/*",
+				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36",
+				"Content-Type": "application/x-www-form-urlencoded",
+				"X-CSRF-Token": crsf,
+				"Host": "www.spotify.com"
+			}
+			session.post("https://www.spotify.com/api/signup/authenticate", headers=headers, data="splot=" + login_token)
+			headers = {
+				"accept": "application/json",
+				"Accept-Encoding": "gzip, deflate, br",
+				"accept-language": "en",
+				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36",
+				"spotify-app-version": "1.1.52.204.ge43bc405",
+				"app-platform": "WebPlayer",
+				"Host": "open.spotify.com",
+				"Referer": "https://open.spotify.com/"
+			}
+
+			r = session.get("https://open.spotify.com/get_access_token?reason=transport&productType=web_player", headers=headers)
+			token = r.json()["accessToken"]
+			self.settitle(script_title)
+			self.clear(script_info)
+			print('[>] ACCOUNT CREATED SUCCESSFULLY\n[-] Email:{0}\n[-] Password:{1}\n[-] Username:{2}\n[-] Gender:{3}\n[-] Birth year:{4}\n[-] Birth month:{5}\n[-] Birth day:{6}\n'.format(credentails['email'],credentails['password'],credentails['username'],credentails['gender'],credentails['birth_year'],credentails['birth_month'],credentails['birth_day']))
+			with open('ACCOUNT-SPOTIFY.txt','a') as f:
+				f.write('[INFO ACCOUNT]\nEmail:{0}\nPassword:{1}\nUsername:{2}\nGender:{3}\nBirth year:{4}\nBirth month:{5}\nBirth day:{6}\nToken:{7}\n___________________\n\n'.format(credentails['email'],credentails['password'],credentails['username'],credentails['gender'],credentails['birth_year'],credentails['birth_month'],credentails['birth_day'],token))
+		except Exception as e:
+			print(e)
 
 	def start(self):
 		while True:
-			if active_count() <= self.threads:
+			if active_count() < self.threads:
 				Thread(target=self.creator).start()
-
 
 if __name__ == "__main__":
 	main = Main()
