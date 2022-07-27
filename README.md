@@ -13,6 +13,7 @@ A project for register on www.spotify.com
 ### Download App For windows os
 
 - [spotify-reg.exe version 1.2](https://github.com/ALIILAPRO/spotify-account-creator/releases/download/v1.2/spotify-reg.exe)
+- [spotify-reg.exe GUI version](https://github.com/ALIILAPRO/spotify-account-creator/releases/download/gui/Spotify.Account.Creator.By.ALIILAPRO.gui.zip)
 --------------------------------------------------------------------
  ### Test the online version
  
@@ -36,5 +37,6 @@ A project for register on www.spotify.com
 7. Open script    `cd spotify-account-creator`
 8. Run script     `python3 spotify-reg.py`
 --------------------------------------------------------------------
+![](https://github.com/ALIILAPRO/spotify-account-creator/blob/main/sc/s-3.jpg)
 ![](https://github.com/ALIILAPRO/spotify-account-creator/blob/main/sc/s-2.jpg)
 ![](https://github.com/ALIILAPRO/spotify-account-creator/blob/main/sc/s-1.jpg)
